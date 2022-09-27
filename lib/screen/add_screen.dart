@@ -39,6 +39,8 @@ class _MyWidgetState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      navigatorKey: Get.key,
+      navigatorObservers: [GetObserver()],
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           backgroundColor:

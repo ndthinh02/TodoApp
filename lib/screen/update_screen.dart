@@ -29,11 +29,14 @@ class _MyWidgetState extends State<UpdateScreen> {
   late String title = _titleController.text;
   late String descripton = _descriptonController.text;
   Todo get todoProvider => context.read<Todo>();
+  late AnimationController animationController;
 
   TodoController get _read => context.read<TodoController>();
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      navigatorKey: Get.key,
+      navigatorObservers: [GetObserver()],
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           backgroundColor:
@@ -42,6 +45,7 @@ class _MyWidgetState extends State<UpdateScreen> {
             child: Container(
               margin: const EdgeInsets.all(16),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,13 +109,12 @@ class _MyWidgetState extends State<UpdateScreen> {
                   ),
                   const SizedBox(height: 30.0),
                   const Center(
-                      child: Flexible(
                     child: Image(
                       image: AssetImage('assets/update.png'),
                       width: 200,
                       height: 200,
                     ),
-                  ))
+                  )
                 ],
               ),
             ),
